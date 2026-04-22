@@ -1,0 +1,1948 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Dr. Bessie Cecil — Textile Heritage</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,400;0,9..144,500;1,9..144,200;1,9..144,300;1,9..144,400&family=Instrument+Serif:ital@0;1&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --bg: #f7f2e8;
+    --bg-2: #efe8d7;
+    --bg-3: #e8dfc9;
+    --ink: #1a1410;
+    --ink-soft: #4a3f33;
+    --ink-dim: #7a6f5f;
+    --indigo: #2d4a6b;
+    --indigo-soft: #4a6fa5;
+    --madder: #a83232;
+    --madder-soft: #c04848;
+    --ochre: #b8874a;
+    --ochre-deep: #8a6434;
+    --line: rgba(26, 20, 16, 0.12);
+    --line-soft: rgba(26, 20, 16, 0.08);
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
+
+  body {
+    font-family: 'Fraunces', Georgia, serif;
+    background: var(--bg);
+    color: var(--ink);
+    line-height: 1.5;
+    overflow-x: hidden;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  img { display: block; max-width: 100%; }
+  ::selection { background: var(--madder); color: var(--bg); }
+
+  /* ================ NAV ================ */
+  nav {
+    position: fixed;
+    top: 0; left: 0; right: 0;
+    z-index: 50;
+    padding: 20px 40px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background: rgba(247, 242, 232, 0.85);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    border-bottom: 1px solid transparent;
+    transition: border-color 0.2s, padding 0.2s;
+  }
+  nav.scrolled { border-bottom-color: var(--line); padding: 14px 40px; }
+
+  .logo {
+    font-family: 'Instrument Serif', serif;
+    font-size: 22px;
+    color: var(--ink);
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+  .logo em { color: var(--madder); font-style: italic; }
+  .logo-mark { display: inline-block; width: 22px; height: 22px; }
+  .logo-mark svg { width: 100%; height: 100%; }
+
+  nav ul {
+    display: flex;
+    gap: 32px;
+    list-style: none;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 10px;
+    letter-spacing: 0.25em;
+    text-transform: uppercase;
+  }
+  nav a {
+    color: var(--ink);
+    text-decoration: none;
+    position: relative;
+    padding: 4px 0;
+    transition: color 0.15s;
+  }
+  nav a:hover { color: var(--madder); }
+  nav a::after {
+    content: '';
+    position: absolute;
+    bottom: 0; left: 0;
+    width: 0; height: 1px;
+    background: var(--madder);
+    transition: width 0.2s ease;
+  }
+  nav a:hover::after { width: 100%; }
+
+  .nav-time {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 10px;
+    letter-spacing: 0.2em;
+    color: var(--ink-dim);
+  }
+
+  /* ================ HERO ================ */
+  .hero {
+    min-height: 100vh;
+    position: relative;
+    padding: 120px 40px 160px;
+    display: grid;
+    grid-template-columns: 1.3fr 1fr;
+    gap: 60px;
+    align-items: end;
+  }
+
+  /* Woven pattern background - CSS only */
+  .hero::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background:
+      repeating-linear-gradient(0deg, 
+        rgba(184, 135, 74, 0.06) 0, rgba(184, 135, 74, 0.06) 1px, 
+        transparent 1px, transparent 14px),
+      repeating-linear-gradient(90deg, 
+        rgba(45, 74, 107, 0.05) 0, rgba(45, 74, 107, 0.05) 1px, 
+        transparent 1px, transparent 14px);
+    pointer-events: none;
+  }
+
+  /* Decorative corner marks */
+  .hero-corner {
+    position: absolute;
+    width: 60px;
+    height: 60px;
+    pointer-events: none;
+  }
+  .hero-corner::before, .hero-corner::after {
+    content: '';
+    position: absolute;
+    background: var(--madder);
+  }
+  .hc-tl { top: 100px; left: 40px; }
+  .hc-tl::before { top: 0; left: 0; width: 30px; height: 1px; }
+  .hc-tl::after { top: 0; left: 0; width: 1px; height: 30px; }
+  .hc-tr { top: 100px; right: 40px; }
+  .hc-tr::before { top: 0; right: 0; width: 30px; height: 1px; }
+  .hc-tr::after { top: 0; right: 0; width: 1px; height: 30px; }
+
+  .hero-left { position: relative; z-index: 2; }
+
+  .hero-meta {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 10px;
+    letter-spacing: 0.3em;
+    text-transform: uppercase;
+    color: var(--ochre-deep);
+    margin-bottom: 40px;
+    display: flex;
+    align-items: center;
+    gap: 16px;
+  }
+  .hero-meta::before {
+    content: '';
+    width: 40px; height: 1px;
+    background: var(--ochre);
+  }
+
+  .hero-title {
+    font-family: 'Fraunces', serif;
+    font-size: clamp(72px, 12vw, 180px);
+    line-height: 0.85;
+    font-weight: 300;
+    letter-spacing: -0.035em;
+    font-variation-settings: "opsz" 144;
+    color: var(--ink);
+  }
+  .hero-title .line { display: block; overflow: hidden; }
+  .hero-title .line span {
+    display: inline-block;
+    transform: translateY(100%);
+    animation: rise 0.7s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+  }
+  .hero-title .l1 span { animation-delay: 0.05s; }
+  .hero-title .l2 span {
+    animation-delay: 0.15s;
+    font-style: italic;
+    color: var(--madder);
+    font-weight: 300;
+  }
+  .hero-title .l3 span {
+    animation-delay: 0.25s;
+    font-weight: 400;
+  }
+  @keyframes rise { to { transform: translateY(0); } }
+
+  .hero-subtitle {
+    font-family: 'Instrument Serif', serif;
+    font-size: clamp(18px, 2vw, 24px);
+    font-style: italic;
+    color: var(--ink-soft);
+    margin-top: 56px;
+    max-width: 520px;
+    line-height: 1.4;
+    opacity: 0;
+    animation: fadeIn 0.6s ease 0.5s forwards;
+  }
+  .hero-subtitle em { color: var(--madder); font-style: italic; }
+  @keyframes fadeIn { to { opacity: 1; } }
+
+  .hero-portrait {
+    position: relative;
+    z-index: 2;
+    opacity: 0;
+    animation: fadeIn 0.8s ease 0.3s forwards;
+  }
+  .hero-portrait-frame {
+    position: relative;
+    aspect-ratio: 4/5;
+    overflow: hidden;
+    border: 1px solid var(--line);
+    background: var(--bg-2);
+  }
+  .hero-portrait-frame img {
+    width: 100%; height: 100%;
+    object-fit: cover;
+    filter: sepia(12%) saturate(90%);
+  }
+  .hero-portrait-label {
+    position: absolute;
+    bottom: 0; left: 0; right: 0;
+    padding: 12px 16px;
+    background: linear-gradient(to top, rgba(26, 20, 16, 0.75), transparent);
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 9px;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: #fff;
+    display: flex;
+    justify-content: space-between;
+  }
+
+  .hero-bottom {
+    position: absolute;
+    bottom: 40px;
+    left: 40px;
+    right: 40px;
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr;
+    gap: 32px;
+    padding-top: 24px;
+    border-top: 1px solid var(--line);
+    z-index: 2;
+    opacity: 0;
+    animation: fadeIn 0.6s ease 0.7s forwards;
+  }
+  .hero-bottom-item {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 9px;
+    letter-spacing: 0.25em;
+    text-transform: uppercase;
+    color: var(--ink-dim);
+  }
+  .hero-bottom-item strong {
+    display: block;
+    font-family: 'Instrument Serif', serif;
+    font-size: 16px;
+    font-weight: 400;
+    color: var(--ink);
+    letter-spacing: 0.01em;
+    text-transform: none;
+    margin-top: 6px;
+  }
+  .hero-bottom-item em { font-style: italic; color: var(--madder); }
+
+  /* ================ MARQUEE ================ */
+  .marquee {
+    overflow: hidden;
+    padding: 24px 0;
+    border-top: 1px solid var(--line);
+    border-bottom: 1px solid var(--line);
+    background: var(--bg-2);
+    margin-top: 120px;
+  }
+  .marquee-track {
+    display: flex;
+    gap: 70px;
+    animation: scroll 40s linear infinite;
+    width: max-content;
+    white-space: nowrap;
+    will-change: transform;
+  }
+  .marquee-item {
+    font-family: 'Fraunces', serif;
+    font-size: 48px;
+    line-height: 1;
+    font-weight: 300;
+    color: var(--ink);
+    display: flex;
+    align-items: center;
+    gap: 70px;
+  }
+  .marquee-item em { font-style: italic; color: var(--madder); font-weight: 300; }
+  .marquee-item .dot {
+    width: 8px; height: 8px;
+    border-radius: 50%;
+    background: var(--ochre);
+    display: inline-block;
+  }
+  @keyframes scroll { to { transform: translateX(-50%); } }
+
+  /* ================ SECTION COMMON ================ */
+  section { padding: 100px 40px; position: relative; }
+  .container { max-width: 1440px; margin: 0 auto; }
+
+  .section-meta {
+    display: grid;
+    grid-template-columns: auto 1fr auto;
+    gap: 32px;
+    align-items: center;
+    margin-bottom: 56px;
+    padding-bottom: 18px;
+    border-bottom: 1px solid var(--line);
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 10px;
+    letter-spacing: 0.25em;
+    text-transform: uppercase;
+    color: var(--ink-soft);
+  }
+  .section-meta .sm-num { color: var(--madder); }
+  .section-meta .sm-title { text-align: center; color: var(--ink-dim); }
+  .section-meta .sm-count { color: var(--ochre-deep); }
+
+  .big-heading {
+    font-family: 'Fraunces', serif;
+    font-size: clamp(48px, 8vw, 120px);
+    line-height: 0.92;
+    font-weight: 300;
+    letter-spacing: -0.03em;
+    font-variation-settings: "opsz" 144;
+    margin-bottom: 56px;
+    color: var(--ink);
+  }
+  .big-heading em { font-style: italic; font-weight: 300; color: var(--madder); }
+  .big-heading .outline {
+    -webkit-text-stroke: 1.2px var(--ink);
+    color: transparent;
+    font-weight: 400;
+  }
+
+  /* ================ ABOUT ================ */
+  .about-layout {
+    display: grid;
+    grid-template-columns: 5fr 7fr;
+    gap: 64px;
+    align-items: start;
+  }
+
+  .about-visual {
+    position: sticky;
+    top: 100px;
+    display: grid;
+    gap: 16px;
+  }
+
+  .about-visual-main {
+    aspect-ratio: 3/4;
+    overflow: hidden;
+    border: 1px solid var(--line);
+    background: var(--bg-2);
+    position: relative;
+  }
+  .about-visual-main img {
+    width: 100%; height: 100%;
+    object-fit: cover;
+    transition: transform 0.6s ease;
+  }
+  .about-visual-main:hover img { transform: scale(1.03); }
+
+  .about-visual-caption {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 9px;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--ink-dim);
+    display: flex;
+    justify-content: space-between;
+    padding-top: 4px;
+  }
+  .about-visual-caption span em {
+    font-family: 'Instrument Serif', serif;
+    font-style: italic;
+    color: var(--madder);
+    text-transform: none;
+    letter-spacing: 0.02em;
+    font-size: 12px;
+  }
+
+  .about-text { font-size: 20px; line-height: 1.55; color: var(--ink); font-weight: 300; }
+  .about-text .lead {
+    font-family: 'Instrument Serif', serif;
+    font-size: clamp(26px, 2.6vw, 34px);
+    line-height: 1.25;
+    font-weight: 400;
+    color: var(--ink);
+    margin-bottom: 32px;
+    font-style: italic;
+  }
+  .about-text .lead em { color: var(--madder); font-style: italic; }
+  .about-text p { margin-bottom: 22px; color: var(--ink-soft); font-family: 'Fraunces', serif; font-weight: 300; }
+  .about-text p em { color: var(--madder); font-style: italic; }
+
+  .pillars {
+    margin-top: 48px;
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 4px;
+  }
+
+  .pillar {
+    border: 1px solid var(--line);
+    padding: 22px;
+    background: var(--bg-2);
+    position: relative;
+    overflow: hidden;
+    transition: border-color 0.2s, transform 0.2s, background 0.2s;
+  }
+  .pillar:hover {
+    border-color: var(--madder);
+    transform: translateY(-2px);
+    background: var(--bg-3);
+  }
+  .pillar::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0;
+    width: 0; height: 2px;
+    background: var(--madder);
+    transition: width 0.3s ease;
+  }
+  .pillar:hover::before { width: 100%; }
+
+  .pillar-num {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 10px;
+    letter-spacing: 0.25em;
+    color: var(--madder);
+    margin-bottom: 10px;
+  }
+  .pillar-text {
+    font-family: 'Instrument Serif', serif;
+    font-size: 17px;
+    line-height: 1.4;
+    color: var(--ink);
+  }
+
+  /* ================ COUNTERS ================ */
+  .counter-section {
+    padding: 70px 40px;
+    border-top: 1px solid var(--line);
+    border-bottom: 1px solid var(--line);
+    background: var(--bg-2);
+    position: relative;
+    overflow: hidden;
+  }
+  .counter-section::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background:
+      radial-gradient(ellipse 30% 70% at 10% 50%, rgba(45, 74, 107, 0.08), transparent),
+      radial-gradient(ellipse 30% 70% at 90% 50%, rgba(168, 50, 50, 0.06), transparent);
+    pointer-events: none;
+  }
+
+  .counters {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 32px;
+    position: relative;
+    z-index: 2;
+  }
+  .counter { position: relative; padding-left: 20px; }
+  .counter::before {
+    content: '';
+    position: absolute;
+    left: 0; top: 8px; bottom: 8px;
+    width: 1px;
+    background: linear-gradient(to bottom, var(--madder), transparent);
+  }
+  .counter-num {
+    font-family: 'Fraunces', serif;
+    font-size: clamp(54px, 6.5vw, 100px);
+    font-weight: 300;
+    line-height: 1;
+    font-variation-settings: "opsz" 144;
+    color: var(--ink);
+    display: flex;
+    align-items: flex-start;
+    gap: 4px;
+  }
+  .counter-num em { font-style: italic; color: var(--madder); font-weight: 300; }
+  .counter-num sup { font-size: 0.3em; color: var(--ochre-deep); margin-top: 0.5em; font-weight: 400; }
+  .counter-label {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 10px;
+    letter-spacing: 0.25em;
+    text-transform: uppercase;
+    color: var(--ink-dim);
+    margin-top: 14px;
+  }
+
+  /* ================ EXPERIENCE ================ */
+  .exp-list { border-top: 1px solid var(--line); }
+  .exp-item {
+    display: grid;
+    grid-template-columns: 100px 1fr auto;
+    gap: 32px;
+    padding: 28px 0;
+    border-bottom: 1px solid var(--line-soft);
+    align-items: center;
+    transition: padding 0.3s ease, background 0.3s ease;
+    position: relative;
+  }
+  .exp-item:hover {
+    padding-left: 20px;
+    padding-right: 20px;
+    background: var(--bg-2);
+  }
+  .exp-year {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 11px;
+    letter-spacing: 0.15em;
+    color: var(--madder);
+    font-weight: 500;
+  }
+  .exp-role {
+    font-family: 'Fraunces', serif;
+    font-size: clamp(22px, 2.4vw, 34px);
+    font-weight: 400;
+    line-height: 1.15;
+    color: var(--ink);
+    font-variation-settings: "opsz" 144;
+    transition: color 0.2s;
+    display: flex;
+    align-items: baseline;
+    gap: 14px;
+    flex-wrap: wrap;
+  }
+  .exp-item:hover .exp-role { color: var(--madder); }
+  .exp-role em {
+    font-style: italic;
+    font-size: 0.6em;
+    color: var(--ink-dim);
+    font-weight: 300;
+  }
+  .exp-location {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 10px;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--ink-dim);
+    text-align: right;
+  }
+  .exp-arrow {
+    position: absolute;
+    right: 20px;
+    top: 50%;
+    transform: translateY(-50%) translateX(-10px);
+    opacity: 0;
+    font-family: 'Fraunces', serif;
+    font-size: 32px;
+    color: var(--madder);
+    transition: all 0.25s ease;
+    font-style: italic;
+  }
+  .exp-item:hover .exp-arrow { opacity: 1; transform: translateY(-50%) translateX(0); }
+
+  /* ================ LIVING LEGACIES ================ */
+  .legacies {
+    background: var(--bg-2);
+    padding: 100px 40px;
+    position: relative;
+  }
+
+  .legacies-header {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 60px;
+    margin-bottom: 72px;
+    align-items: end;
+  }
+  .legacies-intro {
+    font-family: 'Instrument Serif', serif;
+    font-size: 22px;
+    line-height: 1.5;
+    font-style: italic;
+    color: var(--ink-soft);
+    max-width: 480px;
+  }
+  .legacies-intro em { color: var(--madder); font-style: italic; }
+
+  .legacies-grid {
+    display: grid;
+    grid-template-columns: repeat(12, 1fr);
+    grid-auto-rows: minmax(340px, auto);
+    gap: 16px;
+  }
+
+  .legacy {
+    position: relative;
+    overflow: hidden;
+    border: 1px solid var(--line);
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    transition: transform 0.3s ease, border-color 0.3s ease;
+    background: var(--bg-3);
+    min-height: 340px;
+  }
+  .legacy:hover { transform: translateY(-4px); border-color: var(--madder); }
+
+  .legacy-image {
+    position: absolute;
+    inset: 0;
+    overflow: hidden;
+  }
+  .legacy-image img {
+    width: 100%; height: 100%;
+    object-fit: cover;
+    transition: transform 0.5s ease;
+  }
+  .legacy:hover .legacy-image img { transform: scale(1.05); }
+
+  .legacy-image::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(to top, rgba(26, 20, 16, 0.85) 0%, rgba(26, 20, 16, 0.4) 50%, rgba(26, 20, 16, 0.1) 100%);
+  }
+
+  .legacy-content {
+    position: relative;
+    z-index: 2;
+    padding: 28px;
+  }
+
+  .legacy-label {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 10px;
+    letter-spacing: 0.25em;
+    text-transform: uppercase;
+    color: var(--ochre);
+    margin-bottom: 16px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+  .legacy-label::before { content: ''; width: 20px; height: 1px; background: var(--ochre); }
+
+  .legacy-title {
+    font-family: 'Fraunces', serif;
+    font-size: clamp(26px, 2.8vw, 40px);
+    line-height: 1;
+    font-weight: 400;
+    color: #fff;
+    font-variation-settings: "opsz" 144;
+    margin-bottom: 12px;
+    letter-spacing: -0.02em;
+  }
+  .legacy-title em { font-style: italic; color: var(--ochre); font-weight: 300; }
+
+  .legacy-desc {
+    font-family: 'Instrument Serif', serif;
+    font-size: 15px;
+    line-height: 1.5;
+    color: rgba(255, 255, 255, 0.85);
+    font-style: italic;
+    max-width: 420px;
+    margin-bottom: 14px;
+  }
+
+  .legacy-meta {
+    display: flex;
+    gap: 16px;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 9px;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: rgba(255, 255, 255, 0.7);
+  }
+  .legacy-meta span { padding: 4px 10px; border: 1px solid rgba(255, 255, 255, 0.3); }
+
+  .legacy-1 { grid-column: span 7; grid-row: span 2; }
+  .legacy-2 { grid-column: span 5; }
+  .legacy-3 { grid-column: span 5; }
+  .legacy-4 { grid-column: span 4; }
+  .legacy-5 { grid-column: span 8; }
+
+  /* ================ MURDER OF CROWS FEATURE ================ */
+  .feature-work {
+    padding: 100px 40px;
+    background: var(--bg);
+    position: relative;
+  }
+
+  .feature-layout {
+    display: grid;
+    grid-template-columns: 1.2fr 1fr;
+    gap: 64px;
+    align-items: center;
+  }
+
+  .feature-image {
+    position: relative;
+    aspect-ratio: 4/3;
+    overflow: hidden;
+    border: 1px solid var(--line);
+    background: var(--bg-2);
+  }
+  .feature-image img {
+    width: 100%; height: 100%;
+    object-fit: cover;
+    filter: contrast(1.05);
+  }
+  .feature-image-label {
+    position: absolute;
+    top: 16px; left: 16px;
+    padding: 6px 12px;
+    background: var(--bg);
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 9px;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--madder);
+    border: 1px solid var(--madder);
+  }
+
+  .feature-content .sm-label {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 10px;
+    letter-spacing: 0.25em;
+    text-transform: uppercase;
+    color: var(--ochre-deep);
+    margin-bottom: 24px;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+  }
+  .feature-content .sm-label::before {
+    content: ''; width: 24px; height: 1px; background: var(--ochre);
+  }
+
+  .feature-title {
+    font-family: 'Fraunces', serif;
+    font-size: clamp(40px, 5vw, 72px);
+    line-height: 1;
+    font-weight: 300;
+    letter-spacing: -0.02em;
+    font-variation-settings: "opsz" 144;
+    margin-bottom: 12px;
+    color: var(--ink);
+  }
+  .feature-title em { font-style: italic; color: var(--madder); font-weight: 300; }
+
+  .feature-subtitle {
+    font-family: 'Instrument Serif', serif;
+    font-size: 18px;
+    font-style: italic;
+    color: var(--ink-soft);
+    margin-bottom: 32px;
+    padding-bottom: 24px;
+    border-bottom: 1px solid var(--line);
+  }
+
+  .feature-desc {
+    font-family: 'Fraunces', serif;
+    font-size: 17px;
+    line-height: 1.6;
+    color: var(--ink-soft);
+    font-weight: 300;
+  }
+  .feature-desc p { margin-bottom: 18px; }
+  .feature-desc em { color: var(--madder); font-style: italic; }
+
+  .feature-credits {
+    margin-top: 32px;
+    padding-top: 24px;
+    border-top: 1px solid var(--line);
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: 24px;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 10px;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--ink-dim);
+  }
+  .feature-credits strong {
+    display: block;
+    font-family: 'Instrument Serif', serif;
+    font-size: 14px;
+    color: var(--ink);
+    text-transform: none;
+    letter-spacing: 0.02em;
+    margin-top: 6px;
+    font-weight: 400;
+  }
+  .feature-credits em {
+    font-family: 'Instrument Serif', serif;
+    font-style: italic;
+    color: var(--madder);
+    text-transform: none;
+    letter-spacing: 0.02em;
+  }
+
+  /* ================ BOOKS ================ */
+  .books { padding: 100px 40px; background: var(--bg-2); }
+
+  .books-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 32px;
+  }
+
+  .book {
+    position: relative;
+    border: 1px solid var(--line);
+    overflow: hidden;
+    background: var(--bg);
+    transition: transform 0.3s ease, border-color 0.3s ease;
+    display: flex;
+    flex-direction: column;
+  }
+  .book:hover {
+    transform: translateY(-6px);
+    border-color: var(--madder);
+  }
+
+  .book-image {
+    aspect-ratio: 4/3;
+    overflow: hidden;
+    position: relative;
+    background: var(--bg-3);
+  }
+  .book-image img {
+    width: 100%; height: 100%;
+    object-fit: cover;
+    transition: transform 0.5s ease;
+  }
+  .book:hover .book-image img { transform: scale(1.05); }
+
+  .book-status {
+    position: absolute;
+    top: 16px; right: 16px;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 9px;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    padding: 5px 10px;
+    background: var(--bg);
+    color: var(--ink);
+    border: 1px solid var(--line);
+  }
+  .book-status.live { background: var(--madder); color: var(--bg); border-color: var(--madder); }
+  .book-status.soon { color: var(--ochre-deep); border-color: var(--ochre); }
+
+  .book-body {
+    padding: 24px 24px 28px;
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+  }
+
+  .book-num {
+    font-family: 'Fraunces', serif;
+    font-size: 28px;
+    font-weight: 300;
+    font-style: italic;
+    color: var(--madder);
+    line-height: 1;
+    margin-bottom: 16px;
+  }
+
+  .book-title {
+    font-family: 'Fraunces', serif;
+    font-size: 26px;
+    line-height: 1.1;
+    font-weight: 400;
+    color: var(--ink);
+    margin-bottom: 10px;
+    font-variation-settings: "opsz" 144;
+  }
+
+  .book-subtitle {
+    font-family: 'Instrument Serif', serif;
+    font-size: 16px;
+    font-style: italic;
+    color: var(--ink-soft);
+    line-height: 1.4;
+    margin-bottom: 18px;
+    flex: 1;
+  }
+
+  .book-type {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 9px;
+    letter-spacing: 0.2em;
+    color: var(--ochre-deep);
+    padding-top: 14px;
+    border-top: 1px solid var(--line);
+  }
+
+  /* ================ EXHIBITIONS ================ */
+  .exhibitions { padding: 100px 40px; background: var(--bg); }
+
+  .exh-list { border-top: 1px solid var(--line); }
+  .exh-item {
+    display: grid;
+    grid-template-columns: 80px 1fr 1fr 100px;
+    gap: 32px;
+    padding: 36px 0;
+    border-bottom: 1px solid var(--line-soft);
+    align-items: center;
+    transition: padding 0.3s ease, background 0.3s ease;
+    position: relative;
+  }
+  .exh-item:hover {
+    padding-left: 24px;
+    background: linear-gradient(90deg, var(--bg-2), transparent);
+  }
+  .exh-num {
+    font-family: 'Fraunces', serif;
+    font-size: 48px;
+    font-weight: 300;
+    font-style: italic;
+    color: var(--madder);
+    line-height: 1;
+  }
+  .exh-title {
+    font-family: 'Fraunces', serif;
+    font-size: clamp(22px, 2.2vw, 32px);
+    font-weight: 400;
+    line-height: 1.1;
+    color: var(--ink);
+    transition: color 0.2s;
+  }
+  .exh-item:hover .exh-title { color: var(--madder); }
+  .exh-venue {
+    font-family: 'Instrument Serif', serif;
+    font-style: italic;
+    font-size: 17px;
+    color: var(--ink-soft);
+  }
+  .exh-year {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 13px;
+    color: var(--ink);
+    text-align: right;
+    letter-spacing: 0.1em;
+  }
+
+  /* ================ CREDENTIALS ================ */
+  .credentials { padding: 100px 40px; background: var(--bg-2); }
+
+  .cred-layout {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 64px;
+  }
+
+  .cred-col h3 {
+    font-family: 'Fraunces', serif;
+    font-size: 40px;
+    font-weight: 300;
+    margin-bottom: 32px;
+    font-variation-settings: "opsz" 144;
+    display: flex;
+    align-items: baseline;
+    gap: 16px;
+    color: var(--ink);
+  }
+  .cred-col h3 em { font-style: italic; color: var(--madder); font-weight: 300; }
+  .cred-col h3 span {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 11px;
+    color: var(--ochre-deep);
+    letter-spacing: 0.2em;
+    font-weight: 400;
+  }
+
+  .cred-list { list-style: none; }
+  .cred-item {
+    display: grid;
+    grid-template-columns: 36px 1fr auto;
+    gap: 18px;
+    padding: 16px 0;
+    border-top: 1px solid var(--line-soft);
+    align-items: baseline;
+    transition: padding 0.2s ease;
+  }
+  .cred-item:last-child { border-bottom: 1px solid var(--line-soft); }
+  .cred-item:hover { padding-left: 10px; }
+
+  .cred-num {
+    font-family: 'Fraunces', serif;
+    font-style: italic;
+    font-size: 18px;
+    color: var(--madder);
+    font-weight: 300;
+  }
+  .cred-name {
+    font-family: 'Instrument Serif', serif;
+    font-size: 17px;
+    line-height: 1.3;
+    color: var(--ink);
+    transition: color 0.2s;
+  }
+  .cred-item:hover .cred-name { color: var(--madder); }
+  .cred-year {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 10px;
+    color: var(--ink-dim);
+    letter-spacing: 0.15em;
+    white-space: nowrap;
+  }
+
+  /* ================ GALLERY STRIP ================ */
+  .gallery {
+    padding: 80px 0;
+    background: var(--bg);
+    border-top: 1px solid var(--line);
+    border-bottom: 1px solid var(--line);
+    overflow: hidden;
+  }
+  .gallery-meta {
+    padding: 0 40px;
+    margin-bottom: 32px;
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 10px;
+    letter-spacing: 0.25em;
+    text-transform: uppercase;
+    color: var(--ink-dim);
+  }
+  .gallery-meta em {
+    font-family: 'Instrument Serif', serif;
+    font-style: italic;
+    color: var(--madder);
+    text-transform: none;
+    letter-spacing: 0.02em;
+    font-size: 20px;
+  }
+  .gallery-track {
+    display: flex;
+    gap: 16px;
+    animation: scrollGallery 60s linear infinite;
+    width: max-content;
+    will-change: transform;
+  }
+  .gallery-item {
+    width: 340px;
+    aspect-ratio: 4/3;
+    overflow: hidden;
+    flex-shrink: 0;
+    position: relative;
+  }
+  .gallery-item img {
+    width: 100%; height: 100%;
+    object-fit: cover;
+  }
+  .gallery-item-caption {
+    position: absolute;
+    bottom: 0; left: 0; right: 0;
+    padding: 12px 14px;
+    background: linear-gradient(to top, rgba(26, 20, 16, 0.75), transparent);
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 9px;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: #fff;
+  }
+  @keyframes scrollGallery { to { transform: translateX(-50%); } }
+
+  /* ================ MEMBERSHIPS ================ */
+  .memberships { padding: 100px 40px; background: var(--bg-2); }
+
+  .mem-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 0 48px;
+  }
+  .mem-item {
+    padding: 20px 0;
+    border-top: 1px solid var(--line-soft);
+    font-family: 'Instrument Serif', serif;
+    font-size: 19px;
+    color: var(--ink);
+    display: flex;
+    gap: 16px;
+    align-items: center;
+    transition: all 0.2s ease;
+  }
+  .mem-item:last-child, .mem-item:nth-last-child(2) {
+    border-bottom: 1px solid var(--line-soft);
+  }
+  .mem-item::before {
+    content: '';
+    width: 8px; height: 8px;
+    background: var(--madder);
+    flex-shrink: 0;
+    transform: rotate(45deg);
+    transition: all 0.3s ease;
+  }
+  .mem-item:hover { color: var(--madder); padding-left: 10px; }
+  .mem-item:hover::before { transform: rotate(225deg) scale(1.3); background: var(--ochre); }
+
+  /* ================ CONTACT ================ */
+  .contact {
+    padding: 120px 40px;
+    background: var(--bg);
+    position: relative;
+    overflow: hidden;
+  }
+  .contact::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background:
+      radial-gradient(ellipse at 20% 30%, rgba(45, 74, 107, 0.08), transparent 50%),
+      radial-gradient(ellipse at 80% 70%, rgba(168, 50, 50, 0.06), transparent 50%);
+    pointer-events: none;
+  }
+
+  .contact-huge {
+    font-family: 'Fraunces', serif;
+    font-size: clamp(60px, 12vw, 180px);
+    line-height: 0.88;
+    font-weight: 300;
+    letter-spacing: -0.035em;
+    font-variation-settings: "opsz" 144;
+    position: relative;
+    z-index: 2;
+    color: var(--ink);
+  }
+  .contact-huge em { font-style: italic; color: var(--madder); font-weight: 300; }
+  .contact-huge .outline {
+    -webkit-text-stroke: 1.2px var(--ink);
+    color: transparent;
+  }
+
+  .contact-methods {
+    display: flex;
+    gap: 60px;
+    margin-top: 80px;
+    padding-top: 32px;
+    border-top: 1px solid var(--line);
+    position: relative;
+    z-index: 2;
+    flex-wrap: wrap;
+  }
+  .contact-method { flex: 1; min-width: 220px; }
+  .contact-method-label {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 10px;
+    letter-spacing: 0.25em;
+    text-transform: uppercase;
+    color: var(--ochre-deep);
+    margin-bottom: 14px;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+  }
+  .contact-method-label::before {
+    content: ''; width: 20px; height: 1px; background: var(--ochre);
+  }
+  .contact-method-value {
+    font-family: 'Fraunces', serif;
+    font-size: clamp(22px, 2.4vw, 32px);
+    font-weight: 300;
+    font-style: italic;
+    color: var(--ink);
+    text-decoration: none;
+    display: inline-block;
+    position: relative;
+    transition: color 0.2s;
+  }
+  .contact-method-value::after {
+    content: '';
+    position: absolute;
+    bottom: -3px; left: 0;
+    width: 100%; height: 1px;
+    background: var(--madder);
+    transform: scaleX(0);
+    transform-origin: left;
+    transition: transform 0.3s ease;
+  }
+  .contact-method-value:hover { color: var(--madder); }
+  .contact-method-value:hover::after { transform: scaleX(1); }
+
+  /* ================ FOOTER ================ */
+  footer {
+    padding: 32px 40px;
+    background: var(--bg-2);
+    border-top: 1px solid var(--line);
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 10px;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--ink-dim);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 16px;
+  }
+  footer .foot-brand { color: var(--ink); }
+  footer em {
+    color: var(--madder);
+    font-style: italic;
+    text-transform: none;
+    letter-spacing: 0.02em;
+    font-family: 'Instrument Serif', serif;
+    font-size: 13px;
+  }
+
+  /* ================ REVEAL ================ */
+  .reveal {
+    opacity: 0;
+    transform: translateY(24px);
+    transition: opacity 0.6s ease, transform 0.6s ease;
+  }
+  .reveal.in { opacity: 1; transform: translateY(0); }
+
+  .reveal-stagger > * {
+    opacity: 0;
+    transform: translateY(20px);
+    transition: opacity 0.5s ease, transform 0.5s ease;
+  }
+  .reveal-stagger.in > * { opacity: 1; transform: translateY(0); }
+  .reveal-stagger.in > *:nth-child(1) { transition-delay: 0s; }
+  .reveal-stagger.in > *:nth-child(2) { transition-delay: 0.06s; }
+  .reveal-stagger.in > *:nth-child(3) { transition-delay: 0.12s; }
+  .reveal-stagger.in > *:nth-child(4) { transition-delay: 0.18s; }
+  .reveal-stagger.in > *:nth-child(5) { transition-delay: 0.24s; }
+  .reveal-stagger.in > *:nth-child(6) { transition-delay: 0.3s; }
+  .reveal-stagger.in > *:nth-child(7) { transition-delay: 0.36s; }
+  .reveal-stagger.in > *:nth-child(8) { transition-delay: 0.42s; }
+
+  /* ================ RESPONSIVE ================ */
+  @media (max-width: 1024px) {
+    nav { padding: 16px 24px; }
+    nav ul { display: none; }
+    section, .feature-work, .books, .legacies, .exhibitions, .credentials, .memberships, .contact { padding: 72px 24px; }
+    .hero { padding: 100px 24px 140px; grid-template-columns: 1fr; gap: 40px; }
+    .hero-corner { display: none; }
+    .hero-bottom { position: static; grid-template-columns: repeat(2, 1fr); margin-top: 40px; }
+    .about-layout { grid-template-columns: 1fr; gap: 40px; }
+    .about-visual { position: static; max-width: 420px; }
+    .feature-layout { grid-template-columns: 1fr; gap: 40px; }
+    .legacies-header { grid-template-columns: 1fr; gap: 32px; }
+    .legacies-grid { grid-template-columns: repeat(6, 1fr); }
+    .legacy-1, .legacy-2, .legacy-3, .legacy-4, .legacy-5 { grid-column: span 6; grid-row: auto; }
+    .books-grid { grid-template-columns: 1fr 1fr; }
+    .counters { grid-template-columns: repeat(2, 1fr); gap: 40px; }
+    .cred-layout { grid-template-columns: 1fr; gap: 40px; }
+    .exh-item { grid-template-columns: 60px 1fr; gap: 16px; }
+    .exh-venue, .exh-year { grid-column: 2; }
+    .mem-grid { grid-template-columns: 1fr; }
+    .pillars { grid-template-columns: 1fr; }
+    .feature-credits { grid-template-columns: 1fr; gap: 16px; }
+  }
+
+  @media (max-width: 640px) {
+    .books-grid { grid-template-columns: 1fr; }
+    .counters { grid-template-columns: 1fr; }
+    .exp-item { grid-template-columns: 1fr; gap: 6px; padding: 22px 0; }
+    .exp-location { text-align: left; }
+    .contact-methods { flex-direction: column; gap: 32px; }
+    .marquee-item { font-size: 36px; }
+    .section-meta { grid-template-columns: 1fr; gap: 6px; text-align: left; }
+    .section-meta .sm-title { text-align: left; }
+    .hero-bottom { grid-template-columns: 1fr; gap: 16px; }
+    .gallery-item { width: 260px; }
+  }
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <div class="logo">
+    <span class="logo-mark">
+      <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <path d="M4 4 Q 12 10 4 16 Q 12 22 20 16 Q 12 10 20 4 Q 12 10 4 4" stroke="#a83232" stroke-width="1" fill="none"/>
+        <circle cx="12" cy="12" r="2" fill="#b8874a"/>
+      </svg>
+    </span>
+    Bessie <em>Cecil</em>
+  </div>
+  <ul>
+    <li><a href="#about">Practice</a></li>
+    <li><a href="#experience">Path</a></li>
+    <li><a href="#legacies">Legacies</a></li>
+    <li><a href="#feature">Crows</a></li>
+    <li><a href="#books">Books</a></li>
+    <li><a href="#contact">Contact</a></li>
+  </ul>
+  <div class="nav-time" id="timeDisplay">◎ CHENNAI</div>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-corner hc-tl"></div>
+  <div class="hero-corner hc-tr"></div>
+
+  <div class="hero-left">
+    <div class="hero-meta">Portfolio · MMXXVI · Textile Heritage</div>
+    <h1 class="hero-title">
+      <span class="line l1"><span>Threaded</span></span>
+      <span class="line l2"><span>archive</span></span>
+      <span class="line l3"><span>of India.</span></span>
+    </h1>
+    <p class="hero-subtitle">
+      Dr. Bessie Cecil — textile researcher, educator, designer &amp; curator tracing India's <em>woven, dyed and printed</em> traditions across two decades.
+    </p>
+  </div>
+
+  <div class="hero-portrait">
+    <div class="hero-portrait-frame">
+      <img src="portrait.jpeg" alt="Dr. Bessie Cecil" loading="eager">
+      <div class="hero-portrait-label">
+        <span>Plate I</span>
+        <span>Chennai · 2025</span>
+      </div>
+    </div>
+  </div>
+
+  <div class="hero-bottom">
+    <div class="hero-bottom-item">Role<strong>Textile <em>Heritage Expert</em></strong></div>
+    <div class="hero-bottom-item">Current<strong>Professor, <em>IICD Jaipur</em></strong></div>
+    <div class="hero-bottom-item">Fellowships<strong><em>08</em> awarded</strong></div>
+    <div class="hero-bottom-item">Published<strong><em>36</em> papers</strong></div>
+  </div>
+</section>
+
+<!-- MARQUEE -->
+<div class="marquee">
+  <div class="marquee-track">
+    <div class="marquee-item">Khadi <span class="dot"></span> <em>Kalamkari</em> <span class="dot"></span> Bagru <span class="dot"></span> <em>Indigo</em> <span class="dot"></span> Chamba Rumal <span class="dot"></span> <em>Handloom</em> <span class="dot"></span> Lungi <span class="dot"></span></div>
+    <div class="marquee-item">Khadi <span class="dot"></span> <em>Kalamkari</em> <span class="dot"></span> Bagru <span class="dot"></span> <em>Indigo</em> <span class="dot"></span> Chamba Rumal <span class="dot"></span> <em>Handloom</em> <span class="dot"></span> Lungi <span class="dot"></span></div>
+  </div>
+</div>
+
+<!-- ABOUT -->
+<section class="about" id="about">
+  <div class="container">
+    <div class="section-meta reveal">
+      <span class="sm-num">§ 01 / Practice</span>
+      <span class="sm-title">— On threads that hold memory —</span>
+      <span class="sm-count">◐ Continuing</span>
+    </div>
+
+    <h2 class="big-heading reveal">
+      <span class="outline">Textile</span><br>
+      traditions as <em>living</em><br>
+      knowledge.
+    </h2>
+
+    <div class="about-layout">
+      <div class="about-visual reveal">
+        <div class="about-visual-main">
+          <img src="teaching.jpg" alt="Dr. Bessie Cecil teaching" loading="lazy">
+        </div>
+        <div class="about-visual-caption">
+          <span>Figure I</span>
+          <span><em>— In practice, Kalakshetra</em></span>
+        </div>
+      </div>
+
+      <div class="about-text reveal">
+        <p class="lead">
+          I treat textile traditions as <em>living knowledge systems</em> — continuing cultural practices that evolve with the hands and lives that carry them forward.
+        </p>
+        <p>
+          My work integrates fieldwork, technical analysis, oral histories, and visual documentation — feeding back into <em>teaching, exhibitions, and publications</em>. Each study grows from relationships built with artisans over time.
+        </p>
+        <p>
+          From handloom villages in Tamil Nadu to block-printing workshops in Rajasthan, from narrative embroideries of the Himalayas to museum archives abroad — I document what is made, by whom, and why it matters now.
+        </p>
+
+        <div class="pillars">
+          <div class="pillar">
+            <div class="pillar-num">⟡ 01</div>
+            <div class="pillar-text">Fieldwork &amp; oral histories</div>
+          </div>
+          <div class="pillar">
+            <div class="pillar-num">⟡ 02</div>
+            <div class="pillar-text">Ethical engagement with artisans</div>
+          </div>
+          <div class="pillar">
+            <div class="pillar-num">⟡ 03</div>
+            <div class="pillar-text">Material-based pedagogy</div>
+          </div>
+          <div class="pillar">
+            <div class="pillar-num">⟡ 04</div>
+            <div class="pillar-text">Curatorial practice rooted in context</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- COUNTERS -->
+<section class="counter-section">
+  <div class="container">
+    <div class="counters reveal-stagger">
+      <div class="counter">
+        <div class="counter-num" data-target="20">0<sup>+</sup></div>
+        <div class="counter-label">Years in Practice</div>
+      </div>
+      <div class="counter">
+        <div class="counter-num" data-target="36">0</div>
+        <div class="counter-label">Papers Published</div>
+      </div>
+      <div class="counter">
+        <div class="counter-num" data-target="43">0</div>
+        <div class="counter-label">Presentations</div>
+      </div>
+      <div class="counter">
+        <div class="counter-num" data-target="8">0</div>
+        <div class="counter-label">Fellowships</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- EXPERIENCE -->
+<section id="experience">
+  <div class="container">
+    <div class="section-meta reveal">
+      <span class="sm-num">§ 02 / Path</span>
+      <span class="sm-title">— Across three decades &amp; institutions —</span>
+      <span class="sm-count">◐ 07 Roles</span>
+    </div>
+
+    <h2 class="big-heading reveal">
+      <em>A life</em> across<br>
+      <span class="outline">looms</span> &amp; lecterns.
+    </h2>
+
+    <div class="exp-list reveal-stagger">
+      <div class="exp-item">
+        <div class="exp-year">2024 —</div>
+        <div class="exp-role">Professor <em>Indian Institute of Crafts &amp; Design</em></div>
+        <div class="exp-location">Jaipur, Rajasthan</div>
+        <div class="exp-arrow">→</div>
+      </div>
+      <div class="exp-item">
+        <div class="exp-year">2023 — 24</div>
+        <div class="exp-role">Consultant <em>Sangamam · Handweaving &amp; Natural Dye</em></div>
+        <div class="exp-location">India</div>
+        <div class="exp-arrow">→</div>
+      </div>
+      <div class="exp-item">
+        <div class="exp-year">2019 — 21</div>
+        <div class="exp-role">Head, Craft Ed. <em>Kalakshetra Foundation</em></div>
+        <div class="exp-location">Chennai</div>
+        <div class="exp-arrow">→</div>
+      </div>
+      <div class="exp-item">
+        <div class="exp-year">2016 — 19</div>
+        <div class="exp-role">Research Consultant <em>Abstract Creative Studio</em></div>
+        <div class="exp-location">Chennai</div>
+        <div class="exp-arrow">→</div>
+      </div>
+      <div class="exp-item">
+        <div class="exp-year">2001 — 03</div>
+        <div class="exp-role">Freelance Designer <em>Weavers Service Center</em></div>
+        <div class="exp-location">Chennai</div>
+        <div class="exp-arrow">→</div>
+      </div>
+      <div class="exp-item">
+        <div class="exp-year">1996 — 99</div>
+        <div class="exp-role">Visiting Faculty <em>Lexicon College of Fashion</em></div>
+        <div class="exp-location">Chennai</div>
+        <div class="exp-arrow">→</div>
+      </div>
+      <div class="exp-item">
+        <div class="exp-year">Also</div>
+        <div class="exp-role">Consultant <em>Ministry of Culture · Textile conferences</em></div>
+        <div class="exp-location">Pan-India</div>
+        <div class="exp-arrow">→</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- LIVING LEGACIES -->
+<section class="legacies" id="legacies">
+  <div class="container">
+    <div class="section-meta reveal">
+      <span class="sm-num">§ 03 / Research Series</span>
+      <span class="sm-title">— Continuing traditions as living archives —</span>
+      <span class="sm-count">◐ 05 Studies</span>
+    </div>
+
+    <div class="legacies-header">
+      <h2 class="big-heading reveal" style="margin-bottom: 0;">
+        Living<br>
+        <em>Legacies.</em>
+      </h2>
+      <p class="legacies-intro reveal">
+        An ongoing body of research documenting textile traditions as evolving cultural practices — from <em>plant to pigment</em>, loom to language, and the hands between.
+      </p>
+    </div>
+
+    <div class="legacies-grid reveal-stagger">
+      <article class="legacy legacy-1">
+        <div class="legacy-image"><img src="lungi.jpg" alt="Lungi weaving" loading="lazy"></div>
+        <div class="legacy-content">
+          <div class="legacy-label">Study I · Material Culture</div>
+          <h3 class="legacy-title">Lungi: <em>everyday</em><br>cloth, layered<br>histories</h3>
+          <p class="legacy-desc">A material and social study of the lungi in South India — tracing how an everyday garment carries identity, labour, and memory.</p>
+          <div class="legacy-meta"><span>South India</span><span>Ongoing</span></div>
+        </div>
+      </article>
+
+      <article class="legacy legacy-2">
+        <div class="legacy-image"><img src="indigo.jpg" alt="Indigo dyeing" loading="lazy"></div>
+        <div class="legacy-content">
+          <div class="legacy-label">Study II · Natural Dye</div>
+          <h3 class="legacy-title">Nilam <em>—</em> Neelam.</h3>
+          <p class="legacy-desc">Indigenous indigo cultivation and extraction, traced from plant to pigment.</p>
+          <div class="legacy-meta"><span>Tamil Nadu</span></div>
+        </div>
+      </article>
+
+      <article class="legacy legacy-3">
+        <div class="legacy-image"><img src="kalamkari.jpg" alt="Kalamkari" loading="lazy"></div>
+        <div class="legacy-content">
+          <div class="legacy-label">Study III · Narrative Textile</div>
+          <h3 class="legacy-title">Gods under <em>the feet</em></h3>
+          <p class="legacy-desc">Narrative painted textiles — the kalamkari tradition of Srikalahasti, where myth becomes cloth.</p>
+          <div class="legacy-meta"><span>Andhra Pradesh</span></div>
+        </div>
+      </article>
+
+      <article class="legacy legacy-4">
+        <div class="legacy-image"><img src="bagru.jpg" alt="Bagru block printing" loading="lazy"></div>
+        <div class="legacy-content">
+          <div class="legacy-label">Study IV · Block Print</div>
+          <h3 class="legacy-title">Bagru<br><em>prints.</em></h3>
+          <p class="legacy-desc">Block printing, natural dyes &amp; pattern vocabularies — with FADAT.</p>
+          <div class="legacy-meta"><span>Rajasthan</span></div>
+        </div>
+      </article>
+
+      <article class="legacy legacy-5">
+        <div class="legacy-image"><img src="chamba.jpg" alt="Chamba Rumal" loading="lazy"></div>
+        <div class="legacy-content">
+          <div class="legacy-label">Study V · Narrative Embroidery · Book</div>
+          <h3 class="legacy-title">Chamba <em>Rumal</em> — the do-rukha of the hills.</h3>
+          <p class="legacy-desc">A research-led book project, MAPIN-approved. Tracing Himalayan double-sided silk embroidery as courtly art and domestic devotion.</p>
+          <div class="legacy-meta"><span>Himachal Pradesh</span><span>MAPIN · In Progress</span></div>
+        </div>
+      </article>
+    </div>
+  </div>
+</section>
+
+<!-- FEATURE: MURDER OF CROWS -->
+<section class="feature-work" id="feature">
+  <div class="container">
+    <div class="section-meta reveal">
+      <span class="sm-num">§ 04 / Featured Work</span>
+      <span class="sm-title">— A collaboration in natural colour —</span>
+      <span class="sm-count">◐ Kalakshetra</span>
+    </div>
+
+    <div class="feature-layout">
+      <div class="feature-image reveal">
+        <img src="crows.jpg" alt="Murder of Crows - monochrome painting" loading="lazy">
+        <div class="feature-image-label">⬥ Monochrome</div>
+      </div>
+
+      <div class="feature-content reveal">
+        <div class="sm-label">Natural Pigment · Painting · 2019–21</div>
+        <h3 class="feature-title">Murder of <em>Crows.</em></h3>
+        <p class="feature-subtitle">A monochrome painting in natural colour.</p>
+        <div class="feature-desc">
+          <p>
+            Developed at the <em>Craft Education and Research Centre, Kalakshetra Foundation</em>, Murder of Crows is a monochrome work prepared entirely from natural colours.
+          </p>
+          <p>
+            The conceptual framework and direction were developed by me, with execution carried out by the artist Venketesh. The collaboration brings together <em>material exploration and painterly interpretation</em>, grounded in traditional processes.
+          </p>
+        </div>
+        <div class="feature-credits">
+          <div>Concept<strong>Dr. Bessie <em>Cecil</em></strong></div>
+          <div>Execution<strong><em>Venketesh</em></strong></div>
+          <div>Made At<strong>CERC, <em>Kalakshetra</em></strong></div>
+        </div>
+      </div>
+    </div>
+
+    <div class="feature-layout" style="margin-top: 120px;">
+      <div class="feature-content reveal">
+        <div class="sm-label">Natural Dyes · Painting</div>
+        <h3 class="feature-title">Herd of <em>Goats.</em></h3>
+        <p class="feature-subtitle">A multicoloured work rendered using natural dyes.</p>
+        <div class="feature-desc">
+          <p>
+            <em>Herd of Goats</em> is a multicoloured work rendered using natural dyes, where the final chromatic outcome emerges only through processing. Unlike conventional painting, the colours are not fully visible at the stage of application; they develop gradually through stages of treatment, requiring a precise understanding of material behaviour and sequence.
+          </p>
+          <p>
+            The conceptual framework and approach to the use of natural dyes were developed by me, while the subject and execution of the artwork were carried out by the artist Venketesh. The work reflects a collaborative engagement between process knowledge and artistic interpretation.
+          </p>
+        </div>
+        <div class="feature-credits">
+          <div>Concept<strong>Dr. Bessie <em>Cecil</em></strong></div>
+          <div>Execution<strong><em>Venketesh</em></strong></div>
+        </div>
+      </div>
+
+      <div class="feature-image reveal">
+        <img src="goats.jpeg" alt="Herd of Goats - multicoloured painting" loading="lazy">
+        <div class="feature-image-label">⬥ Multicolour</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<!-- BOOKS -->
+<section class="books" id="books">
+  <div class="container">
+    <div class="section-meta reveal">
+      <span class="sm-num">§ 05 / Publications</span>
+      <span class="sm-title">— Research made material —</span>
+      <span class="sm-count">◐ 03 Volumes</span>
+    </div>
+
+    <h2 class="big-heading reveal">
+      Books<br>
+      &amp; <em>swatch</em> <span class="outline">scholarship</span>.
+    </h2>
+
+    <div class="books-grid reveal-stagger">
+      <article class="book">
+        <div class="book-image">
+          <img src="book_khadi_cover.jpg" alt="A Journey with Khadi cover" loading="lazy">
+          <div class="book-status live">● Published</div>
+        </div>
+        <div class="book-body">
+          <div class="book-num">01</div>
+          <h3 class="book-title">A Journey with Khadi</h3>
+          <p class="book-subtitle">Khadi is humane. Khadi is cotton. Khadi is people.</p>
+          <div class="book-type">— Swatch Book</div>
+        </div>
+      </article>
+
+      <article class="book">
+        <div class="book-image">
+          <img src="book_khadi_display.jpg" alt="Weaves and Traditions" loading="lazy">
+          <div class="book-status soon">○ In Progress</div>
+        </div>
+        <div class="book-body">
+          <div class="book-num">02</div>
+          <h3 class="book-title">Weaves &amp; Traditions</h3>
+          <p class="book-subtitle">Handwoven textiles of India.</p>
+          <div class="book-type">— Swatch Book</div>
+        </div>
+      </article>
+
+      <article class="book">
+        <div class="book-image">
+          <img src="book_weaves.jpg" alt="Weaving India" loading="lazy">
+          <div class="book-status soon">○ In Progress</div>
+        </div>
+        <div class="book-body">
+          <div class="book-num">03</div>
+          <h3 class="book-title">Weaving India</h3>
+          <p class="book-subtitle">A book exploring woven traditions, with swatches.</p>
+          <div class="book-type">— Monograph</div>
+        </div>
+      </article>
+    </div>
+  </div>
+</section>
+
+<!-- GALLERY STRIP -->
+<div class="gallery">
+  <div class="gallery-meta">
+    <span>◎ In the Field &amp; Archive</span>
+    <span><em>Photographs from practice</em></span>
+    <span>◎ 2019 — 2024</span>
+  </div>
+  <div class="gallery-track">
+    <div class="gallery-item"><img src="exhibition_1.jpg" alt="" loading="lazy"><div class="gallery-item-caption">Hands Behind Handloom · 2024</div></div>
+    <div class="gallery-item"><img src="exhibition_2.jpg" alt="" loading="lazy"><div class="gallery-item-caption">Khadi Exhibition</div></div>
+    <div class="gallery-item"><img src="lungi.jpg" alt="" loading="lazy"><div class="gallery-item-caption">Lungi weaving · South India</div></div>
+    <div class="gallery-item"><img src="indigo.jpg" alt="" loading="lazy"><div class="gallery-item-caption">Indigo vat · Tamil Nadu</div></div>
+    <div class="gallery-item"><img src="kalamkari.jpg" alt="" loading="lazy"><div class="gallery-item-caption">Kalamkari · Srikalahasti</div></div>
+    <div class="gallery-item"><img src="bagru.jpg" alt="" loading="lazy"><div class="gallery-item-caption">Bagru Prints · Rajasthan</div></div>
+    <div class="gallery-item"><img src="flag.jpg" alt="" loading="lazy"><div class="gallery-item-caption">Flag restoration · Fort St. George</div></div>
+    <!-- Duplicate for infinite scroll -->
+    <div class="gallery-item"><img src="exhibition_1.jpg" alt="" loading="lazy"><div class="gallery-item-caption">Hands Behind Handloom · 2024</div></div>
+    <div class="gallery-item"><img src="exhibition_2.jpg" alt="" loading="lazy"><div class="gallery-item-caption">Khadi Exhibition</div></div>
+    <div class="gallery-item"><img src="lungi.jpg" alt="" loading="lazy"><div class="gallery-item-caption">Lungi weaving · South India</div></div>
+    <div class="gallery-item"><img src="indigo.jpg" alt="" loading="lazy"><div class="gallery-item-caption">Indigo vat · Tamil Nadu</div></div>
+    <div class="gallery-item"><img src="kalamkari.jpg" alt="" loading="lazy"><div class="gallery-item-caption">Kalamkari · Srikalahasti</div></div>
+    <div class="gallery-item"><img src="bagru.jpg" alt="" loading="lazy"><div class="gallery-item-caption">Bagru Prints · Rajasthan</div></div>
+    <div class="gallery-item"><img src="flag.jpg" alt="" loading="lazy"><div class="gallery-item-caption">Flag restoration · Fort St. George</div></div>
+  </div>
+</div>
+
+<!-- EXHIBITIONS -->
+<section class="exhibitions">
+  <div class="container">
+    <div class="section-meta reveal">
+      <span class="sm-num">§ 06 / Curatorial</span>
+      <span class="sm-title">— Research made public —</span>
+      <span class="sm-count">◐ 04 Shows</span>
+    </div>
+
+    <h2 class="big-heading reveal">
+      Exhibitions<br>
+      <em>curated.</em>
+    </h2>
+
+    <div class="exh-list reveal-stagger">
+      <div class="exh-item">
+        <div class="exh-num">01</div>
+        <div class="exh-title">Hands Behind Handloom</div>
+        <div class="exh-venue">DakshinaChitra Museum, Chennai</div>
+        <div class="exh-year">2024</div>
+      </div>
+      <div class="exh-item">
+        <div class="exh-num">02</div>
+        <div class="exh-title">A Journey Back to Khadi</div>
+        <div class="exh-venue">Kalakshetra Foundation, Chennai</div>
+        <div class="exh-year">2021</div>
+      </div>
+      <div class="exh-item">
+        <div class="exh-num">03</div>
+        <div class="exh-title">Colours of Nature</div>
+        <div class="exh-venue">ICCR, Kolkata</div>
+        <div class="exh-year">2014</div>
+      </div>
+      <div class="exh-item">
+        <div class="exh-num">04</div>
+        <div class="exh-title">Batik Sutra: Tagore, Travel &amp; Textiles</div>
+        <div class="exh-venue">ICCR, Kolkata</div>
+        <div class="exh-year">2011</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CREDENTIALS -->
+<section class="credentials">
+  <div class="container">
+    <div class="section-meta reveal">
+      <span class="sm-num">§ 07 / Recognition</span>
+      <span class="sm-title">— Fellowships &amp; service —</span>
+      <span class="sm-count">◐ International</span>
+    </div>
+
+    <div class="cred-layout">
+      <div class="cred-col reveal">
+        <h3>Fellowships <em>awarded</em> <span>/ 08</span></h3>
+        <ul class="cred-list">
+          <li class="cred-item"><span class="cred-num">i.</span><span class="cred-name">Charles Wallace Research Fellowship, British Library</span><span class="cred-year">2015</span></li>
+          <li class="cred-item"><span class="cred-num">ii.</span><span class="cred-name">INTACH, New Delhi</span><span class="cred-year">2015 — 16</span></li>
+          <li class="cred-item"><span class="cred-num">iii.</span><span class="cred-name">Asian Civilisations Museum, Singapore</span><span class="cred-year">2010 — 11</span></li>
+          <li class="cred-item"><span class="cred-num">iv.</span><span class="cred-name">Craft Education &amp; Research Center, Kalakshetra</span><span class="cred-year">2007 — 08</span></li>
+          <li class="cred-item"><span class="cred-num">v.</span><span class="cred-name">Fulbright Doctoral &amp; Professional Research Fellowship, USA</span><span class="cred-year">2006 — 07</span></li>
+          <li class="cred-item"><span class="cred-num">vi.</span><span class="cred-name">Nehru Trust UK, Visiting Fellowship, London</span><span class="cred-year">2006 — 07</span></li>
+          <li class="cred-item"><span class="cred-num">vii.</span><span class="cred-name">Crafts Museum, New Delhi</span><span class="cred-year">2004</span></li>
+          <li class="cred-item"><span class="cred-num">viii.</span><span class="cred-name">Small Study Fund, INTACH UK, New Delhi</span><span class="cred-year">2004</span></li>
+        </ul>
+      </div>
+
+      <div class="cred-col reveal">
+        <h3>Service <em>&amp; conservation</em> <span>/ Select</span></h3>
+        <ul class="cred-list">
+          <li class="cred-item"><span class="cred-num">·</span><span class="cred-name">Internship, Textile Conservation, Textile Museum, Washington DC</span><span class="cred-year">2007</span></li>
+          <li class="cred-item"><span class="cred-num">·</span><span class="cred-name">Consultant, National Flag Restoration, Fort St. George</span><span class="cred-year">2019</span></li>
+          <li class="cred-item"><span class="cred-num">·</span><span class="cred-name">Review of Indian Textiles, Metropolitan Museum of Art, NY</span><span class="cred-year">2007</span></li>
+          <li class="cred-item"><span class="cred-num">·</span><span class="cred-name">Chamba Rumal collection, Bhuri Singh Museum</span><span class="cred-year">2006</span></li>
+          <li class="cred-item"><span class="cred-num">·</span><span class="cred-name">Sari collection documentation, Government Museum, Chennai</span><span class="cred-year">2005</span></li>
+          <li class="cred-item"><span class="cred-num">·</span><span class="cred-name">Condition report, Victoria Memorial Hall, Kolkata</span><span class="cred-year">2004</span></li>
+          <li class="cred-item"><span class="cred-num">·</span><span class="cred-name">Research film, indigenous cotton, Sabarmati Ashram</span><span class="cred-year">2021</span></li>
+          <li class="cred-item"><span class="cred-num">·</span><span class="cred-name">Ideation Team, Atmanirbhar Bharat Design Centre, Red Fort</span><span class="cred-year">2021</span></li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- MEMBERSHIPS -->
+<section class="memberships">
+  <div class="container">
+    <div class="section-meta reveal">
+      <span class="sm-num">§ 08 / Affiliations</span>
+      <span class="sm-title">— Committees &amp; councils —</span>
+      <span class="sm-count">◐ 10 Bodies</span>
+    </div>
+
+    <h2 class="big-heading reveal">
+      Professional<br>
+      <em>bodies</em>.
+    </h2>
+
+    <div class="mem-grid reveal-stagger">
+      <div class="mem-item">Textile &amp; Clothing Research Centre</div>
+      <div class="mem-item">Madras Literary Society</div>
+      <div class="mem-item">Museum Association of India</div>
+      <div class="mem-item">Indian Assoc. for Conservation of Cultural Property</div>
+      <div class="mem-item">International Council of Museums — Conservation</div>
+      <div class="mem-item">Craft Council of India</div>
+      <div class="mem-item">Indo-American Association, Chennai</div>
+      <div class="mem-item">Expert Committee, GI Registry of India</div>
+      <div class="mem-item">Advisory Committee, Weavers Service Centre</div>
+      <div class="mem-item">External Examiner, NIFT Chennai</div>
+    </div>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section class="contact" id="contact">
+  <div class="container">
+    <div class="section-meta reveal">
+      <span class="sm-num">§ 09 / Correspondence</span>
+      <span class="sm-title">— Begin a conversation —</span>
+      <span class="sm-count">◐ Open</span>
+    </div>
+
+    <h2 class="contact-huge reveal">
+      Let us<br>
+      <em>weave</em> something<br>
+      <span class="outline">together</span>.
+    </h2>
+
+    <div class="contact-methods reveal-stagger">
+      <div class="contact-method">
+        <div class="contact-method-label">Electronic Mail</div>
+        <a href="mailto:bessie96@gmail.com" class="contact-method-value">bessie96@gmail.com</a>
+      </div>
+      <div class="contact-method">
+        <div class="contact-method-label">Telephone</div>
+        <a href="tel:+919841445514" class="contact-method-value">+91 984 144 5514</a>
+      </div>
+      <div class="contact-method">
+        <div class="contact-method-label">Locate</div>
+        <span class="contact-method-value" style="cursor:default;">Chennai ⟷ Jaipur</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="foot-brand">© MMXXVI · Dr. Bessie Cecil</div>
+  <div><em>Textile traditions are living knowledge systems.</em></div>
+  <div>Portfolio · Threaded Archive</div>
+</footer>
+
+<script>
+  // Nav scroll
+  const nav = document.querySelector('nav');
+  let lastScroll = 0;
+  window.addEventListener('scroll', () => {
+    const s = window.scrollY;
+    if (s > 40) nav.classList.add('scrolled');
+    else nav.classList.remove('scrolled');
+    lastScroll = s;
+  }, { passive: true });
+
+  // Smooth scroll
+  document.querySelectorAll('nav a').forEach(link => {
+    link.addEventListener('click', (e) => {
+      const href = link.getAttribute('href');
+      if (href && href.startsWith('#')) {
+        e.preventDefault();
+        const target = document.querySelector(href);
+        if (target) target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+      }
+    });
+  });
+
+  // Reveal on scroll
+  const io = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('in');
+        io.unobserve(entry.target);
+      }
+    });
+  }, { threshold: 0.1, rootMargin: '0px 0px -60px 0px' });
+
+  document.querySelectorAll('.reveal, .reveal-stagger').forEach(el => io.observe(el));
+
+  // Counter animation
+  const counterIO = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting && !entry.target.dataset.animated) {
+        entry.target.dataset.animated = 'true';
+        const target = parseInt(entry.target.dataset.target);
+        const hasSup = entry.target.innerHTML.includes('sup');
+        const duration = 1400;
+        const start = performance.now();
+
+        function update(now) {
+          const elapsed = now - start;
+          const progress = Math.min(elapsed / duration, 1);
+          const eased = 1 - Math.pow(1 - progress, 3);
+          const current = Math.floor(target * eased);
+          entry.target.innerHTML = current + (hasSup ? '<sup>+</sup>' : '');
+          if (progress < 1) requestAnimationFrame(update);
+          else entry.target.innerHTML = target + (hasSup ? '<sup>+</sup>' : '');
+        }
+        requestAnimationFrame(update);
+        counterIO.unobserve(entry.target);
+      }
+    });
+  }, { threshold: 0.3 });
+
+  document.querySelectorAll('.counter-num').forEach(c => counterIO.observe(c));
+
+  // Time
+  function updateTime() {
+    const now = new Date();
+    const opts = { hour: '2-digit', minute: '2-digit', hour12: false, timeZone: 'Asia/Kolkata' };
+    const timeStr = now.toLocaleTimeString('en-GB', opts);
+    const el = document.getElementById('timeDisplay');
+    if (el) el.textContent = `◎ CHENNAI · ${timeStr}`;
+  }
+  updateTime();
+  setInterval(updateTime, 30000);
+</script>
+
+</body>
+</html>
